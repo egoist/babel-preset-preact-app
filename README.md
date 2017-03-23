@@ -16,16 +16,6 @@ yarn add babel-preset-preact-app --dev
 }
 ```
 
-Option for `babel-preset-env`:
-
-```js
-{
-  "presets": [
-    ["preact-app", {"env": {}}]
-  ]
-}
-```
-
 ## Contributing
 
 1. Fork it!

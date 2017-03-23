@@ -1,8 +1,15 @@
 const path = require('path')
 
-module.exports = (ctx, options = {}) => {
+module.exports = () => {
   const presets = [
-    [require.resolve('babel-preset-env'), options.env]
+    [require.resolve('babel-preset-env'), {
+      modules: false,
+      useBuiltIns: false,
+      targets: {
+        ie: 9,
+        uglify: true
+      }
+    }]
   ]
 
   const plugins = [
