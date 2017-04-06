@@ -1,10 +1,15 @@
 const path = require('path')
 
+const env = process.env.BABEL_ENV || process.env.NODE_ENV
+
 module.exports = () => {
   const presets = [
-    [require.resolve('babel-preset-env'), {
+    env === 'test' ? [require('babel-preset-env').default, {
+      targets: {
+        node: 'current'
+      }
+    }] : [require('babel-preset-env').default, {
       modules: false,
-      useBuiltIns: false,
       targets: {
         ie: 9,
         uglify: true
@@ -18,13 +23,8 @@ module.exports = () => {
     [require.resolve('babel-plugin-transform-react-jsx'), {
       pragma: 'h'
     }],
-    [require.resolve('babel-plugin-transform-object-rest-spread'), {
-      useBuiltIns: true
-    }],
+    require.resolve('babel-plugin-transform-object-rest-spread'),
     [require.resolve('babel-plugin-transform-runtime'), {
-      helpers: false,
-      polyfill: false,
-      regenerator: true,
       // Resolve the Babel runtime relative to the config.
       moduleName: path.dirname(require.resolve('babel-runtime/package'))
     }]
