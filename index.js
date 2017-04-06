@@ -18,6 +18,7 @@ module.exports = () => {
   ]
 
   const plugins = [
+    require.resolve('babel-plugin-transform-decorators-legacy'),
     require.resolve('babel-plugin-preact-require'),
     require.resolve('babel-plugin-transform-class-properties'),
     [require.resolve('babel-plugin-transform-react-jsx'), {
